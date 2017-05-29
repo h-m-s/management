@@ -4,6 +4,7 @@
         <TITLE>Telnet Results Tracker</TITLE>
     </HEAD>
     <BODY>
+      <div class="flex-item">
       <h1>Total Attacks: {{ total_attacks }}<br>
       <h2>Attacks in last:</h1>
       <ul>
@@ -11,24 +12,31 @@
       <LI>Last hour: <B>{{ last_hour }}</B></LI>
       <LI>Last week: <B>{{ last_week }}</B></LI>
       </ul>
+      </div>
+      <div class="flex-item">
       <h1>Total servers: {{ total_servers }}</h1>
       <ul>
 	{% for server in ping_results %}
 	<li>{{server.region}}: {{server.status}}</li>
 	{% endfor %}
-	</ul>
+      </ul>
+      </div>
+      <div class="flex-item">
       <h1>Top Clients:</h1>
       <UL>
 	{% for item in top_clients %}
         <LI>{{item.ip}}: <B>{{item.count}}</B></LI>
 	{% endfor %}
       </UL>
+      </div>
+      <div class="flex-item">
       <h1>ASNs by Country/Total Count Seen:</h1>
       <UL>
 	{% for asn in top_asns|sort(attribute='count', reverse=True)%}
         <LI>{{asn.asn}}: <B>{{asn.count}}</B></LI>
 	{% endfor %}
       </UL>
+      </div>
       <h2>Data parsed: {{ timestamp }} PST</h2>
     </BODY>
 </HTML>
