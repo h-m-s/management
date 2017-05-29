@@ -2,7 +2,7 @@
 """                                                                                                                                                                    
 Definition for tweeted tweets mapping                                                                                                                                  
 """
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.dialects import postgresql
 from models.base import BaseModel, Base
@@ -19,6 +19,7 @@ class Server(BaseModel, Base):
     date_created = Column(DateTime)
     last_checked = Column(DateTime)
     name = Column(String)
+    active = Column(Boolean)
 
     def __init__(self, server_id, ip, region, name):
         self.server_id = server_id
@@ -27,4 +28,5 @@ class Server(BaseModel, Base):
         self.name = name
         self.date_created = datetime.datetime.utcnow()
         self.last_checked = datetime.datetime.utcnow()
+        self.active = True
         

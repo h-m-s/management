@@ -19,7 +19,7 @@ def ping_telnet_server(ip):
         return(True)
                                                                         
 def check_servers():
-    server_list = [server for server in storage.session.query(Server)]
+    server_list = [server for server in storage.session.query(Server).filter(Server.active == True)]
 
     servers = []
     ip_list = []
